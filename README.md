@@ -1,1 +1,1 @@
-# Vagrant
+# VAGRANT CMS Bootstrap

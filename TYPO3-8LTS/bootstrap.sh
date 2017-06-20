@@ -4,7 +4,7 @@
 # Website: http://akira-henke.de/
 #    Repo: https://github.com/ZENOS-M/Vagrant
 
-#!/usr/bin/env bash
+/usr/bin/env bash
 
 #
 # Web-Server Installation
@@ -13,7 +13,7 @@
 # Vriables
 PASSWORD='12345678'
 PROJECTFOLDER='testproject'
-NEWESTVERSION='7.6.18'
+NEWESTVERSION='8.7.1'
 
 # create project folder
 sudo mkdir "/var/www/html/${PROJECTFOLDER}"
@@ -85,11 +85,11 @@ mysql -u root -p12345678 -e "CREATE DATABASE typo3_${PROJECTFOLDER} CHARACTER SE
 
 # Get TYPO3 Files
 cd /var/www/html/
-wget get.typo3.org/7.6
-tar -xzvf 7.6
+wget get.typo3.org/8.7
+tar -xzvf 8.7
 mv -v /var/www/html/typo3_src-${NEWESTVERSION}/* /var/www/html/${PROJECTFOLDER}
 sudo rm -r -f /var/www/html/typo3_src-${NEWESTVERSION}/
-sudo rm -r -f /var/www/html/7.6
+sudo rm -r -f /var/www/html/8.7
 cd /var/www/html/${PROJECTFOLDER}
 sudo touch FIRST_INSTALL
 sudo mkdir "/var/www/html/${PROJECTFOLDER}/typo3_src"
@@ -100,6 +100,33 @@ sudo replace "; max_input_vars = 1000" "max_input_vars = 1500" -- /etc/php5/apac
 
 # Sendmail Hots configuration
 sudo replace "127.0.0.1 localhost" "127.0.0.1 vagrant-ubuntu-trusty-64.localdomain vagrant-ubuntu-trusty-64 localdev localhost" -- /etc/hosts
+
+sudo service apache2 restart
+
+#
+# PHP7 Installation
+#
+
+sudo add-apt-repository ppa:ondrej/php
+echo -e "\n"
+
+sudo apt-get update
+
+sudo apt-get -y install php7.0
+
+sudo apt-get -y install php7.0-mysql
+
+sudo a2dismod php5
+sudo a2enmod php7.0
+
+# PHP Configuration
+sudo replace "max_execution_time = 30" "max_execution_time = 240" -- /etc/php/7.0/apache2/php.ini
+sudo replace "; max_input_vars = 1000" "max_input_vars = 1500" -- /etc/php/7.0/apache2/php.ini
+
+sudo apt-get -y install php7.0-gd
+sudo apt-get -y install php7.0-soap
+sudo apt-get -y install php7.0-xml
+sudo apt-get -y install php7.0-zip
 
 sudo service apache2 restart
 
