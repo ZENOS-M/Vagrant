@@ -148,10 +148,10 @@ if [ "$PHP" == "7" ]; then
 	# PHP Configuration
 	sudo replace "max_execution_time = 30" "max_execution_time = 240" -- /etc/php/7.0/apache2/php.ini
 	sudo replace "; max_input_vars = 1000" "max_input_vars = 1500" -- /etc/php/7.0/apache2/php.ini
-    sudo replace "post_max_size = 8M" "post_max_size = 128M" -- /etc/php7.0/apache2/php.ini
-    sudo replace "memory_limit = 128M" "memory_limit = 256M" -- /etc/php7.0/apache2/php.ini
-    sudo replace "upload_max_filesize = 2M" "upload_max_filesize = 64M" -- /etc/php7.0/apache2/php.ini
-    sudo replace "display_errors = Off" "display_errors = On" -- /etc/php7.0/apache2/php.ini
+    sudo replace "post_max_size = 8M" "post_max_size = 128M" -- /etc/7.0/apache2/php.ini
+    sudo replace "memory_limit = 128M" "memory_limit = 256M" -- /etc/7.0/apache2/php.ini
+    sudo replace "upload_max_filesize = 2M" "upload_max_filesize = 64M" -- /etc/7.0/apache2/php.ini
+    sudo replace "display_errors = Off" "display_errors = On" -- /etc/7.0/apache2/php.ini
 	
 	sudo service apache2 restart
 	
