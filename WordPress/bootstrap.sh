@@ -17,6 +17,9 @@ sudo apt-get -y upgrade
 sudo apt-get install -y apache2
 sudo apt-get install -y php5
 
+sudo apt-get -y install php5-mbstring
+sudo apt-get -y install php5-dom
+
 # install mysql and give password to installer
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password $PASSWORD"
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $PASSWORD"
@@ -141,6 +144,9 @@ if [ "$PHP" == "7" ]; then
 	sudo apt-get -y install php7.0
 
 	sudo apt-get -y install php7.0-mysql
+    
+	sudo apt-get -y install php7.0-mbstring
+	sudo apt-get -y install php7.0-dom
 
 	sudo a2dismod php5
 	sudo a2enmod php7.0

@@ -13,7 +13,7 @@
 # Vriables
 PASSWORD='12345678'
 PROJECTFOLDER='testproject'
-NEWESTVERSION='9.0.0'
+NEWESTVERSION='9.1.0'
 
 # create project folder
 sudo mkdir "/var/www/html/${PROJECTFOLDER}"
@@ -129,6 +129,7 @@ sudo apt-get -y install php7.2-soap
 sudo apt-get -y install php7.2-xml
 sudo apt-get -y install php7.2-zip
 sudo apt-get -y install php7.2-intl
+sudo apt-get -y install php7.2-mbstring
 
 sudo apt-get -y install libpcre3
 sudo apt-get -y install libpcre3-dev
