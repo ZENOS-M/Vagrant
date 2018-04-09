@@ -13,7 +13,7 @@
 # Vriables
 PASSWORD='12345678'
 PROJECTFOLDER='testproject'
-NEWESTVERSION='7.6.25'
+NEWESTVERSION='7.6.26'
 
 # create project folder
 sudo mkdir "/var/www/html/${PROJECTFOLDER}"

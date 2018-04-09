@@ -129,7 +129,15 @@ sudo apt-get -y install php7.2-soap
 sudo apt-get -y install php7.2-xml
 sudo apt-get -y install php7.2-zip
 sudo apt-get -y install php7.2-intl
+
 sudo apt-get -y install php7.2-mbstring
+sudo apt-get -y install php7.2-dom
+
+# sudo apt-get -y install php7.0-dev
+# sudo apt-get -y install php-pear
+# sudo apt-get -y install libmcrypt-dev libreadline-dev
+# sudo pecl install mcrypt-1.0.1
+# echo 'extension=mcrypt.so' | sudo tee --append /etc/php/7.2/apache2/php.ini
 
 sudo apt-get -y install libpcre3
 sudo apt-get -y install libpcre3-dev
