@@ -10,6 +10,8 @@ sudo mkdir "/var/www/html/project2"
 sudo mkdir "/var/www/html/project3"
 sudo mkdir "/var/www/html/project4"
 sudo mkdir "/var/www/html/project5"
+sudo mkdir "/var/www/html/project6"
+sudo mkdir "/var/www/html/project7"
 
 # update / upgrade
 sudo apt-get update
@@ -76,6 +78,20 @@ VHOST=$(cat <<EOF
 <VirtualHost 192.168.33.25:80>
     DocumentRoot "/var/www/html/project5"
     <Directory "/var/www/html/project5">
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+<VirtualHost 192.168.33.26:80>
+    DocumentRoot "/var/www/html/project6"
+    <Directory "/var/www/html/project6">
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+<VirtualHost 192.168.33.27:80>
+    DocumentRoot "/var/www/html/project7"
+    <Directory "/var/www/html/project7">
         AllowOverride All
         Require all granted
     </Directory>
@@ -155,11 +171,11 @@ if [ "$PHP" == "7" ]; then
 	sudo a2enmod php7.0
 	
 	# PHP Configuration
-	sudo replace "max_execution_time = 30" "max_execution_time = 240" -- /etc/php/7.0/apache2/php.ini
-	sudo replace "; max_input_vars = 1000" "max_input_vars = 1500" -- /etc/php/7.0/apache2/php.ini
-    sudo replace "post_max_size = 8M" "post_max_size = 128M" -- /etc/php/7.0/apache2/php.ini
-    sudo replace "memory_limit = 128M" "memory_limit = 256M" -- /etc/php/7.0/apache2/php.ini
-    sudo replace "upload_max_filesize = 2M" "upload_max_filesize = 64M" -- /etc/php/7.0/apache2/php.ini
+	sudo replace "max_execution_time = 30" "max_execution_time = 360" -- /etc/php/7.0/apache2/php.ini
+	sudo replace "; max_input_vars = 1000" "max_input_vars = 2000" -- /etc/php/7.0/apache2/php.ini
+    sudo replace "post_max_size = 8M" "post_max_size = 1024M" -- /etc/php/7.0/apache2/php.ini
+    sudo replace "memory_limit = 128M" "memory_limit = 1024M" -- /etc/php/7.0/apache2/php.ini
+    sudo replace "upload_max_filesize = 2M" "upload_max_filesize = 256M" -- /etc/php/7.0/apache2/php.ini
     sudo replace "display_errors = Off" "display_errors = On" -- /etc/php/7.0/apache2/php.ini
 	
 	sudo service apache2 restart
@@ -197,11 +213,11 @@ if [ "$PHP" == "7.2" ]; then
 	sudo a2enmod php7.2
 	
 	# PHP Configuration
-	sudo replace "max_execution_time = 30" "max_execution_time = 240" -- /etc/php/7.2/apache2/php.ini
-	sudo replace "; max_input_vars = 1000" "max_input_vars = 1500" -- /etc/php/7.2/apache2/php.ini
-    sudo replace "post_max_size = 8M" "post_max_size = 128M" -- /etc/php/7.2/apache2/php.ini
-    sudo replace "memory_limit = 128M" "memory_limit = 256M" -- /etc/php/7.2/apache2/php.ini
-    sudo replace "upload_max_filesize = 2M" "upload_max_filesize = 64M" -- /etc/php/7.2/apache2/php.ini
+	sudo replace "max_execution_time = 30" "max_execution_time = 360" -- /etc/php/7.2/apache2/php.ini
+	sudo replace "; max_input_vars = 1000" "max_input_vars = 2000" -- /etc/php/7.2/apache2/php.ini
+    sudo replace "post_max_size = 8M" "post_max_size = 1024M" -- /etc/php/7.2/apache2/php.ini
+    sudo replace "memory_limit = 128M" "memory_limit = 1024M" -- /etc/php/7.2/apache2/php.ini
+    sudo replace "upload_max_filesize = 2M" "upload_max_filesize = 256M" -- /etc/php/7.2/apache2/php.ini
     sudo replace "display_errors = Off" "display_errors = On" -- /etc/php/7.2/apache2/php.ini
     
     # sudo apt-get -y install php7.0-dev
